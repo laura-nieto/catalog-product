@@ -1,0 +1,258 @@
+/* GENERAL */
+.section--general{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-template-rows: repeat(2,1fr);
+    justify-content: center;
+    margin: 60px auto;
+    row-gap: 60px;
+    width: 90%;
+}
+
+.article--general{
+    grid-row: span 2;
+    justify-self: center;
+}
+
+.article--general img{
+    max-height: 400px;
+    margin-bottom: 20px;
+}
+
+.article--general h2{
+    text-align: center;
+}
+
+.article--desciption{
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.article--characteristics{
+    grid-column: 2;
+    grid-row: 2;
+}
+
+.margin-bot{
+    margin-bottom: 10px;
+}
+
+.p-size{
+    font-size: 1.1rem;
+}
+
+/* BLOCKS */
+.section--blocks{
+    margin: 100px auto;
+    width: 90%;
+}
+
+.section--blocks h2{
+    margin-bottom: 30px;
+}
+
+.tab--media--img{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    row-gap: 40px;
+    justify-items: center;
+    padding: 50px;
+}
+
+.tab--media--img img{
+    height: 100%;
+    max-width: 200px;
+    object-fit: cover;
+}
+
+.tab--media--video{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    row-gap: 40px;
+    justify-items: center;
+    padding: 50px;
+}
+
+.tab--media--video video{
+    height: 240px;
+    width: 320px;
+}
+
+/* NAV TAB */
+.div--tabs{
+    display: flex;
+    justify-content: space-between;
+}
+
+.border--tab{
+    border: #dee2e6 solid 2px;
+}
+
+.border--tab--botton{
+    border-bottom: none;
+}
+.border--tab--right{
+    border-right: none;
+}
+
+.ul--tab{
+    display: flex;
+    list-style: none;
+}
+
+.ul--tab:first-child{
+    margin-left: 20px;
+}
+
+.li--tab{
+    padding: 10px 30px;
+}
+
+.li--tab a{
+    color: #000;
+    padding: inherit;
+}
+
+
+/* LINKS */
+.ul--end{
+    margin-bottom: 10px;
+}
+
+.li--register{
+    border: #0d6efd 1px solid;
+    border-radius: 5px;
+    margin-right: 20px;
+    padding: 6px 6px;
+}
+
+.li--register a{
+    color: #000;
+    padding:inherit;
+    text-decoration: none;
+}
+
+/* RESPONSIVE */
+@media(max-width: 1600px){
+    .tab--media--video{
+        grid-template-columns: repeat(3,1fr)
+    }
+}
+
+@media (min-width: 1024px) and (max-width: 1200px){
+    .tab--media--video{
+        grid-template-columns: repeat(2,1fr)
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1023px){
+    .tab--media--img {
+        grid-template-columns: repeat(3,1fr);
+    }
+    .tab--media--video{
+        grid-template-columns: repeat(2,1fr)
+    }
+}
+
+@media (min-width: 580px) and (max-width: 767px){
+    .tab--media--video{
+        grid-template-columns: 1fr;
+    }
+    .tab--media--video video{
+        width: 420px;
+    }
+    .tab--media--img {
+        grid-template-columns: repeat(2,1fr);
+    }
+    .div--tabs {
+        flex-direction: column-reverse;
+    }
+    .ul--end{
+        align-self: center;
+    }
+
+
+    .section--general {
+        grid-template-columns: 1fr;
+        grid-template-rows: none;
+    }
+    .article--general {
+        grid-row: 1;
+    }
+    .article--desciption {
+        grid-column: 1;
+        grid-row: 2;
+    }
+    .article--characteristics {
+        grid-column: 1;
+        grid-row: 3;
+    }
+}
+
+@media(min-width:480px) and (max-width:579px){
+    .tab--media--video{
+        grid-template-columns: 1fr;
+    }
+    .tab--media--img {
+        grid-template-columns: 1fr;
+    }
+    .div--tabs {
+        flex-direction: column-reverse;
+    }
+    .ul--end{
+        align-self: center;
+        margin-bottom: 20px;
+    }
+
+    .section--general {
+        grid-template-columns: 1fr;
+        grid-template-rows: none;
+    }
+    .article--general {
+        grid-row: 1;
+    }
+    .article--desciption {
+        grid-column: 1;
+        grid-row: 2;
+    }
+    .article--characteristics {
+        grid-column: 1;
+        grid-row: 3;
+    }
+}
+
+@media(min-width:320px) and (max-width:479px){
+    .tab--media--video{
+        grid-template-columns: 1fr;
+    }
+    .tab--media--video video{
+        width: 300px;
+    }
+    .tab--media--img {
+        grid-template-columns: 1fr;
+    }
+    .div--tabs {
+        flex-direction: column-reverse;
+    }
+    .ul--end{
+        align-self: center;
+        margin-bottom: 20px;
+    }
+    
+    
+    .section--general {
+        grid-template-columns: 1fr;
+        grid-template-rows: none;
+    }
+    .article--general {
+        grid-row: 1;
+    }
+    .article--desciption {
+        grid-column: 1;
+        grid-row: 2;
+    }
+    .article--characteristics {
+        grid-column: 1;
+        grid-row: 3;
+    }
+}

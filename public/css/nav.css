@@ -1,0 +1,39 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body{ 
+    min-height: 100vh;
+    overflow: auto;
+}
+
+.nav{
+    align-items: center;
+    background-color: #CCCCCC;
+    display: flex;
+    height: 50px;
+}
+
+.nav--ul{
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    margin: 0 50px;
+    width: 100%;
+}
+
+.nav--ul__li a{
+    color: rgb(47,51,69);
+    font-size: 1.2rem;
+    text-decoration: none;
+}
+
+.nav--login{
+    display: flex;
+}
+
+.nav--ul__li:not(:last-child){
+    margin-right: 40px;
+}
