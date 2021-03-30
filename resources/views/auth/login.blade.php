@@ -20,7 +20,10 @@
             <input type="checkbox" name="remember" id="remember" class="login--checkbox">
             <label for="remember" class="login--label--remember">Recordarme</label>
 
-            <button type="submit" class="login--btn">Ingresar</button>
+            <button type="submit" class="login--btn btn">Ingresar</button>
+        </article>
+        <article class="login--registrar">
+            <a href="/registrar">Crear una cuenta</a>
         </article>
     </form>
 @endsection

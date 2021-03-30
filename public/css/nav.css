@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+
 *{
     box-sizing: border-box;
     margin: 0;
@@ -9,9 +11,13 @@ html, body{
     overflow: auto;
 }
 
+h1,h2,h3,h4,h5,h6,p,a,li,label{
+    font-family: 'Nunito', sans-serif;
+}
+
 .nav{
     align-items: center;
-    background-color: #CCCCCC;
+    background-color: rgb(125,176,173);
     display: flex;
     height: 50px;
 }
@@ -25,7 +31,7 @@ html, body{
 }
 
 .nav--ul__li a{
-    color: rgb(47,51,69);
+    color: #fff;
     font-size: 1.2rem;
     text-decoration: none;
 }
@@ -36,4 +42,11 @@ html, body{
 
 .nav--ul__li:not(:last-child){
     margin-right: 40px;
+}
+.btn{
+    border: rgb(0, 173, 162) 1px solid;
+    border-radius: 5px;
+    background-color: transparent;
+    color: rgb(0, 173, 162);
+    padding: 10px 20px;
 }

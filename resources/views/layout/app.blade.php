@@ -18,11 +18,20 @@
                         <li class="nav--ul__li"><a href="/">Logo</a></li>
                     </div>
                     <div class="nav--login">
+                        <li class="nav--ul__li"><a href="/new/product">Anunciá con nosotros</a></li>
+                    </div>
+                    <div class="nav--login">
                         <li class="nav--ul__li"><a href="/login">Login</a></li>
                     </div>
                 @else
                     <div class='nav--logo'>
                         <li class="nav--ul__li"><a href="/">Logo</a></li>
+                    </div>
+                    <div class="nav--login">
+                        <li class="nav--ul__li"><a href="/new/product">Anunciá con nosotros</a></li>
+                    </div>
+                    <div class="nav--login">
+                        <li class="nav--ul__li"><a href="/new/product">Trabajá con nosotros</a></li>
                     </div>
                     <div class="nav--login">
                         <li class="nav--ul__li"><a href="/logOut">Cerrar Sesión</a></li>

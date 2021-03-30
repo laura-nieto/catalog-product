@@ -17,6 +17,7 @@ class CreateAssetsTable extends Migration
             $table->bigIncrements('id');
             $table->foreignId('product_id')->constrained('products');
             $table->string('route');
+            $table->string('type');
 
             $table->timestamps();
         });

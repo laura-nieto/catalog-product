@@ -10,7 +10,10 @@ class User extends Authenticatable
 {
     use Notifiable;
 
-    // public $timestamps = false;
+    public function product_user()
+    {
+        return $this->belongsToMany('App\Product','product_user');
+    }
 
     public function product_detail()
     {

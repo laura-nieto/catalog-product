@@ -18,4 +18,9 @@ class Product extends Model
     public function asset(){
         return $this->hasMany('App\Asset','product_id');
     }
+
+    public function product_user()
+    {
+        return $this->belongsToMany('App\User','product_user');
+    }
 }

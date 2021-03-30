@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-})->name('index');
+Route::get('/', 'ProductController@index')->name('index');
 
 
 // LOGIN - REGISTRO - LOG-OUT
@@ -25,17 +23,14 @@ Route::get('/login',function(){
 })->name('login');
 Route::post('/login','UserController@login');
 
-
 Route::get('/registrar','UserController@create');
 Route::post('/registrar','UserController@store');
 
 Route::get('/logOut', 'UserController@logOut');
 
 
-// PRODUCT SINGLE - NEW PRODUCT
-Route::get('/producto/{id}',function(){
-    return view('product.detail');
-});
+// SINGLE PRODUCT - NEW PRODUCT
+Route::get('/producto/{id}','ProductController@show');
 
 Route::get('/new/product','ProductController@create');
 Route::post('/new/product','ProductController@store');

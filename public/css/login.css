@@ -1,5 +1,5 @@
 .login--form{
-    border: 2px solid rgb(47,51,69);
+    border: 2px solid rgb(125,176,173);
     border-radius: 5px;
     margin: 100px auto;
     padding: 20px 0;
@@ -20,7 +20,7 @@
 
 /* TITLE */
 .login--title{
-    border-bottom: solid 2px rgb(47,51,69);
+    border-bottom: solid 2px rgb(125,176,173);
     margin: 0 auto 30px;
     width: 97%;
 }
@@ -68,5 +68,99 @@
     grid-column: 2;
     justify-self: start;
     margin: 10px 0;
-    padding: 3px 10px;
+}
+
+/* REGISTER */
+.login--registrar{
+    text-align: end;
+    margin-right: 20px;
+}
+.login--registrar a{
+    text-decoration: none;
+    font-size: 1.1rem;
+}
+
+/* RESPONSIVE */
+@media (min-width: 580px) and (max-width: 767px){
+    .login--login {
+        grid-template-columns: 1fr;
+        justify-items: center;
+    }
+    .login--label{
+        justify-self: unset;
+    }
+    .login--checkbox{
+        grid-column: 1;
+        grid-row: 5;
+        justify-self: self-start;
+        width: 75%;
+    }
+    .login--label--remember{
+        grid-column: 1;
+        grid-row: 5;
+        justify-self: end;
+        width: 55%;
+    }
+    .login--btn{
+        grid-column: 1;
+        justify-self: unset;
+    }
+}
+
+@media(min-width:480px) and (max-width:579px){
+    .login--form {
+        width: 75%;
+    }
+    .login--login {
+        grid-template-columns: 1fr;
+        justify-items: center;
+    }
+    .login--label{
+        justify-self: unset;
+    }
+    .login--checkbox{
+        grid-column: 1;
+        grid-row: 5;
+        justify-self: self-start;
+        width: 75%;
+    }
+    .login--label--remember{
+        grid-column: 1;
+        grid-row: 5;
+        justify-self: end;
+        width: 55%;
+    }
+    .login--btn{
+        grid-column: 1;
+        justify-self: unset;
+    }
+}
+
+@media(min-width:320px) and (max-width:479px){
+    .login--form {
+        width: 75%;
+    }
+    .login--login {
+        grid-template-columns: 1fr;
+        justify-items: center;
+    }
+    .login--label{
+        justify-self: unset;
+    }
+    .login--checkbox{
+        grid-column: 1;
+        grid-row: 5;
+        justify-self: self-start;
+        width: 75%;
+    }
+    .login--label--remember{
+        grid-column: 1;
+        grid-row: 5;
+        justify-self: end;
+        width: 55%;
+    }
+    .login--btn{
+        grid-column: 1;
+        justify-self: unset;
+    }
 }

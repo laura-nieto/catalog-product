@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Category;
 use App\Product_detail;
 use App\Asset;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -17,7 +18,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $product = Product::all();
+        return view('index',['products'=>$product]);
     }
 
     /**
@@ -41,9 +43,7 @@ class ProductController extends Controller
     {
         $product = new Product;
         $product_detail = new Product_detail;
-        $asset = new Asset;
-    
-
+        
         $rules = [
             'name' => 'required',
             'description' => 'required',
@@ -110,6 +110,8 @@ class ProductController extends Controller
         //ASSET
             if($request->hasfile('asset_img')) {
                 foreach($request->file('asset_img') as $img){
+                    $asset = new Asset;
+
                     $path = $img->getClientOriginalExtension();
                     $originalName = $img->getClientOriginalName();
                     $imgName = date('y-m-d').'-'.$request->name.'-'.$originalName.'.'.$path;
@@ -118,24 +120,35 @@ class ProductController extends Controller
 
                     $asset->route = $imgName;
                     $asset->product_id = $product->id;
+                    $asset->type = 'image';
 
                     $asset->save();
                 }
             }
             if($request->hasfile('asset_video')){
                 foreach($request->file('asset_video') as $video){
+                    $asset = new Asset;
+
                     $path = $video->getClientOriginalExtension();
                     $originalName = $video->getClientOriginalName();
                     $videoName = date('y-m-d').'-'.$request->name.'-'.$originalName.'.'.$path;
 
-                    $video->storeAs('images',$videoName,'public');
+                    $video->storeAs('videos',$videoName,'public');
 
                     $asset->route = $videoName;
                     $asset->product_id = $product->id;
+                    $asset->type = 'video';
                 
                     $asset->save();
                 }
             }
+
+        // TABLE product_user
+        if(Auth::user()){
+            $idUser = Auth::user()->id;
+            $product->product_user()->attach($idUser);
+        }
+        
 
         return redirect()->route('index');
     }
@@ -146,9 +159,10 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show(Product $product, $id)
     {
-        //
+        $product = Product::where('id',$id)->first();
+        return view('product.detail',['product'=>$product]);
     }
 
     /**

@@ -126,7 +126,7 @@
 
         </section>
         
-        <button type="submit" class="register--btn">Registrar</button>
+        <button type="submit" class="register--btn btn">Registrar</button>
     </form>
 
 @endsection
