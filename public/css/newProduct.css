@@ -1,7 +1,6 @@
 /* La mayoría del código se comparte con el registro
     register.css
 */
-
 .newProduct--textarea{
     width: 300px;
     height: 120px;
@@ -39,4 +38,82 @@
 }
 .newProduct--div--asset label{
     margin-bottom: 5px;
+}
+
+/* MODIFY PRODUCT */
+.modify--form{
+    display: grid;
+    margin: 100px 50px;
+}
+.modify--section{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column: span 2;
+}
+.modify--div{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+/* RESPONSIVE */
+@media (min-width: 580px) and (max-width: 767px){
+    .modify--section{
+        grid-column: 1;
+        grid-template-columns: 1fr;
+        justify-items: center;
+    }
+    .newProduct--section--asset{
+        grid-column: 1;    
+    }
+    .register--btn{
+        grid-column: 1;
+    }
+
+    .register--form{
+        grid-template-columns: 1fr;
+        justify-items: center;
+    }
+    .newProduct--div{
+        grid-column: 1;
+    }
+    .newProduct--detail{
+        grid-template-columns: 1fr;
+        margin-top: 50px;
+    }
+    .newProduct--div:first-child{
+        grid-column: 1;
+    } 
+}
+@media(min-width:320px) and (max-width:579px){
+    .modify--section{
+        grid-column: 1;
+        grid-template-columns: 1fr;
+        justify-items: center;
+    }
+    .newProduct--section--asset{
+        grid-column: 1;
+        flex-direction: column;
+    }
+    .newProduct--div--asset{
+        margin-bottom: 30px;
+    }
+    .register--btn{
+        grid-column: 1;
+        margin-top: 50px;
+    }
+
+    .register--form{
+        grid-template-columns: 1fr;
+    }
+    .newProduct--div{
+        grid-column: 1;
+    }
+    .newProduct--detail{
+        grid-template-columns: 1fr;
+        margin-top: 50px;
+    }
+    .newProduct--div:first-child{
+        grid-column: 1;
+    } 
 }

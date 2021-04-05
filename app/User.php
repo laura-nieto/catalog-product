@@ -10,6 +10,11 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    public function payment()
+    {
+        return $this->hasMany('App\Payment');
+    }
+
     public function product_user()
     {
         return $this->belongsToMany('App\Product','product_user');
@@ -26,7 +31,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'email', 'password', 'phone'
+        'email', 'password', 'phone','account_type'
     ];
 
     /**

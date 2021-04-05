@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
+    protected $fillable = [
+        'price','phone',
+    ];
+
     public function product_detail()
     {
         return $this->belongsTo('App\Product_detail');
@@ -22,5 +26,10 @@ class Product extends Model
     public function product_user()
     {
         return $this->belongsToMany('App\User','product_user');
+    }
+
+    public function payment()
+    {
+        return $this->hasMany('App\Payment');
     }
 }

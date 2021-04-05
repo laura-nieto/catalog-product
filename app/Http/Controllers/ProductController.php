@@ -18,7 +18,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $product = Product::all();
+        $product = Product::orderBy('id','desc')->get();
         return view('index',['products'=>$product]);
     }
 
@@ -43,7 +43,7 @@ class ProductController extends Controller
     {
         $product = new Product;
         $product_detail = new Product_detail;
-        
+
         $rules = [
             'name' => 'required',
             'description' => 'required',
@@ -150,7 +150,7 @@ class ProductController extends Controller
         }
         
 
-        return redirect()->route('index');
+        return redirect('/')->with('create','Producto creado con éxito');
     }
 
     /**
@@ -171,9 +171,10 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
+    public function edit(Product $product,$id)
     {
-        //
+        $product = Product::findOrFail($id);
+        return view('product.modify',['product'=>$product]);
     }
 
     /**
@@ -183,9 +184,88 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update($id,Request $request, Product $product)
     {
-        //
+        $product = Product::findOrFail($id);
+        $product_detail = $product->product_detail;
+        
+        // VALIDATE
+        $rules = [
+            'phone' => 'required|numeric',
+            'price' => 'required|numeric',
+            
+            'height' => 'required',
+            'size' => 'required',
+            'color1' => 'required',
+            'color2' => 'required',
+            'color3' => 'required',
+            'texture' => 'required',
+
+            'asset_img[]' =>'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'asset_video[]' =>'mimes:mp4,mov,ogg,avi|max:20000'
+        ];
+
+        $message = [
+            'required' => 'El campo es obligatorio',
+            'numeric' => 'El campo debe ser numérico',
+            'image' => 'La imagen debe ser en formato: jpeg, png, jpg, gif, svg',
+            'asset_img.mimes' => 'La imagen debe ser en formato: jpeg, png, jpg, gif, svg',
+            'image.max' => 'La imagen debe tener como maximo :max kb',
+            'asset_video.mimes' => 'El video debe ser en formato: mp4, mov, ogg, avi',
+            'asset_video.max' => 'El video debe pesar menos de :max kb'
+        ];
+        
+        // UPDATE
+        $product_detail->update([
+           'height' => $request->height,
+           'size' => $request->size,
+           'color1' => $request->color1,
+           'color2' => $request->color2,
+           'color3' => $request->color3,
+           'texture' => $request->texture,
+           'price' => $request->price,
+        ]);
+        $product->update([
+            'price' => $request->price,
+            'phone' => $request->phone
+        ]);
+
+        //ASSET
+        if($request->hasfile('asset_img')) {
+            foreach($request->file('asset_img') as $img){
+                $asset = new Asset;
+
+                $path = $img->getClientOriginalExtension();
+                $originalName = $img->getClientOriginalName();
+                $imgName = date('y-m-d').'-'.$request->name.'-'.$originalName;
+
+                $img->storeAs('images',$imgName,'public');
+
+                $asset->route = $imgName;
+                $asset->product_id = $product->id;
+                $asset->type = 'image';
+
+                $asset->save();
+            }
+        }
+        if($request->hasfile('asset_video')){
+            foreach($request->file('asset_video') as $video){
+                $asset = new Asset;
+
+                $path = $video->getClientOriginalExtension();
+                $originalName = $video->getClientOriginalName();
+                $videoName = date('y-m-d').'-'.$request->name.'-'.$originalName;
+
+                $video->storeAs('videos',$videoName,'public');
+
+                $asset->route = $videoName;
+                $asset->product_id = $product->id;
+                $asset->type = 'video';
+            
+                $asset->save();
+            }
+        }
+        return redirect('/')->with('update','Producto modificado con éxito');
     }
 
     /**

@@ -19,7 +19,7 @@ h1,h2,h3,h4,h5,h6,p,a,li,label{
     align-items: center;
     background-color: rgb(125,176,173);
     display: flex;
-    height: 50px;
+    min-height: 50px;
 }
 
 .nav--ul{
@@ -43,10 +43,57 @@ h1,h2,h3,h4,h5,h6,p,a,li,label{
 .nav--ul__li:not(:last-child){
     margin-right: 40px;
 }
+
+.nav--dropdown{
+    display: none;
+}
+
 .btn{
     border: rgb(0, 173, 162) 1px solid;
     border-radius: 5px;
     background-color: transparent;
     color: rgb(0, 173, 162);
     padding: 10px 20px;
+}
+
+/* RESPONSIVE */
+@media (min-width: 240px) and (max-width: 767px){
+    .nav{
+        justify-content: space-between;
+    }
+    .nav--ul{
+        width: auto;
+    }
+    .nav--login{
+        display: none;
+    }
+    .nav--dropdown{
+        align-items: flex-end;
+        display: flex;
+        flex-direction: column;
+    }
+    .button-dropdown {
+        background:transparent;
+        border: none;
+        margin-right: 50px;
+        outline: none;
+    }
+    .button-dropdown i{
+        color: #fff;
+    }
+    .dropdown--content{
+        display: none;
+    }
+    .nav--ul--dropdown{
+        list-style: none;
+        margin-right: 10px;
+    }
+    .nav--ul__li--dropdown{
+        margin-top: 5px;
+    }
+    .nav--ul__li--dropdown a{
+        color: #fff;
+        font-size: 1.2rem;
+        text-decoration: none;
+    }
 }

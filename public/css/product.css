@@ -86,6 +86,10 @@
     width: 320px;
 }
 
+.tab--title{
+    grid-column: span 4;
+}
+
 /* NAV TAB */
 .div--tabs{
     display: flex;
