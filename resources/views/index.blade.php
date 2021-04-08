@@ -1,10 +1,12 @@
 @extends('layout.app')
 @section('title','Nombre')
 @section('main')
-    @if (session('update') || session('create'))
+    @if (session('update') || session('create') || session('logout') || session('login'))
         <div class="div--success">
             {{ session('update') }}
             {{ session('create') }}
+            {{ session('logout') }}
+            {{ session('login') }}
         </div>
     @endif
     <section class="section--catalogue">

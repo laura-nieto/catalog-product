@@ -1,6 +1,11 @@
 @extends('layout.app')
 @section('title','Iniciar Sesión -')
 @section('main')
+    @if (session('create'))
+        <div class="div--success">
+            {{ session('create') }}
+        </div>
+    @endif
     <form action="" method="post" class="login--form">
         @csrf
         <article class="login--title">

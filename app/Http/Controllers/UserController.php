@@ -34,7 +34,7 @@ class UserController extends Controller
 
         if (Auth::attempt($credentials,$remember)) {
             // Authentication passed...
-            return redirect()->route('index');
+            return redirect()->route('index')->with('login','Ha ingresado con éxito, bienvenido');
         } else {
             $errors = (['password' => ['El usuario o la contraseña son inválidos.']]);
 
@@ -44,7 +44,7 @@ class UserController extends Controller
 
     public function logOut(){
         Auth::logout();
-        return redirect('/');
+        return redirect('/')->with('logout','Ha cerrado sesión');
     }
 
     /**
@@ -128,7 +128,7 @@ class UserController extends Controller
 
         $user->save();
 
-        return redirect()->route('login');
+        return redirect()->route('login')->with('create','Cuenta registrada con exito');
     }
 
     /**

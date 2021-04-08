@@ -23,11 +23,16 @@
                         <li class="nav--ul__li"><a href="/login">Login</a></li>
                     </div>
                 @else
-                    <div class="nav--login">
-                        <li class="nav--ul__li"><a href="/new/product">Anunciá con nosotros</a></li>
-                        <li class="nav--ul__li"><a href="/new/product">Trabajá con nosotros</a></li>
-                        <li class="nav--ul__li"><a href="/logOut">Cerrar Sesión</a></li>
-                    </div>
+                    @if (Auth::user()->account_type === 1)
+                        <div class="nav--login">
+                            <li class="nav--ul__li"><a href="/new/product">Nuevo Producto</a></li>
+                            <li class="nav--ul__li"><a href="/logOut">Cerrar Sesión</a></li>
+                        </div>
+                    @else
+                        <div class="nav--login">
+                            <li class="nav--ul__li"><a href="/logOut">Cerrar Sesión</a></li>
+                        </div>
+                    @endif
                 @endguest
             </ul>
             
@@ -39,9 +44,16 @@
                             <li class="nav--ul__li--dropdown"><a href="/registrar/admin">Anunciá con nosotros</a></li>
                             <li class="nav--ul__li--dropdown"><a href="/login">Login</a></li>
                         @else
-                            <li class="nav--ul__li--dropdown"><a href="/new/product">Anunciá con nosotros</a></li>
-                            <li class="nav--ul__li--dropdown"><a href="/new/product">Trabajá con nosotros</a></li>
-                            <li class="nav--ul__li--dropdown"><a href="/logOut">Cerrar Sesión</a></li>
+                            @if (Auth::user()->account_type === 1)
+                                <div class="nav--login">
+                                    <li class="nav--ul__li"><a href="/new/product">Anunciá con nosotros</a></li>
+                                    <li class="nav--ul__li"><a href="/logOut">Cerrar Sesión</a></li>
+                                </div>
+                            @else
+                                <div class="nav--login">
+                                    <li class="nav--ul__li"><a href="/logOut">Cerrar Sesión</a></li>
+                                </div>
+                            @endif
                         @endguest
                     </ul>
                 </div>
