@@ -2,10 +2,11 @@
 @section('title','Registrate -')
 @section('main')
 
-
     <form action="" method="post" class="register--form">
         @csrf
         <section class="register--general">
+            
+            <input type="hidden" name="account_type" value="1">
 
             <label for="name" class="register--label--general">Nombres</label>
             <input type="text" name="name" id="name" class="register--input" value="{{old('name')}}">
@@ -20,7 +21,7 @@
             @enderror
          
             <label for="email" class="register--label--general">Correo</label>
-            <input type="email" name="email" id="email" class="register--input" value= @if(!$errors->has('price')) "{{old('email')}}" @endif> 
+            <input type="email" name="email" id="email" class="register--input" value= @if(!$errors->has('email')) "{{old('email')}}" @endif> 
             @error('email')
                 <small id="emailHelp" class="error">{{$message}}</small>
             @enderror
@@ -117,4 +118,4 @@
         <button type="submit" class="register--btn btn">Registrar</button>
 
     </form>
-    @endsection
+@endsection

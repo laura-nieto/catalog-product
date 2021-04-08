@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->integer('phone');
             $table->string('country');
             $table->foreignId('product_detail_id')->constrained('product_detail');
-            $table->integer('account_type');
+            $table->integer('account_type'); // 1 = Admin, 2 = User
 
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();

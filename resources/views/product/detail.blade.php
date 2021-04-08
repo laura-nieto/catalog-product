@@ -96,7 +96,7 @@
             </ul>
             @guest
                 <ul class="ul--tab ul--end">
-                    <li class="li--register"><a href="/registrar">Registrarse</a></li>
+                    <li class="li--register"><a href="/registrar/user">Registrarse</a></li>
                     <li class="li--register"><a href="/login">Iniciar Sesión</a></li>
                 </ul>
             @endguest  
@@ -142,7 +142,7 @@
             </ul>
             @guest
                 <ul class="ul--tab ul--end">
-                    <li class="li--register"><a href="/registrar">Registrarse</a></li>
+                    <li class="li--register"><a href="/registrar/user">Registrarse</a></li>
                     <li class="li--register"><a href="/login">Iniciar Sesión</a></li>
                 </ul>
             @endguest  

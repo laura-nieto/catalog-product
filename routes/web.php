@@ -22,23 +22,28 @@ Route::get('/login',function(){
 })->name('login');
 Route::post('/login','UserController@login');
 
-Route::get('/registrar','UserController@create');
-Route::post('/registrar','UserController@store');
+Route::get('/registrar/user','UserController@create');
+Route::post('/registrar/user','UserController@store');
 
 Route::get('/logOut', 'UserController@logOut');
+
+Route::get('/registrar/admin',function(){
+    return view('auth.registerAdmin');
+});
+Route::post('/registrar/admin','UserController@store');
 
 
 // SINGLE PRODUCT - NEW PRODUCT - MODIFY PRODUCT
 Route::get('/producto/{id}','ProductController@show')->name('product');
 
-Route::get('/new/product','ProductController@create');
-Route::post('/new/product','ProductController@store');
+Route::get('/new/product','ProductController@create')->middleware('auth','admin');
+Route::post('/new/product','ProductController@store')->middleware('auth','admin');
 
-Route::get('/producto/modificar/{id}','ProductController@edit');
-Route::put('/producto/modificar/{id}','ProductController@update');
+// Route::get('/producto/modificar/{id}','ProductController@edit')->middleware('auth','admin');
+// Route::put('/producto/modificar/{id}','ProductController@update')->middleware('auth','admin');
 
 
 // PAYPAL
-Route::get('/payment/{productID}', 'PaymentController@payWithPayPal')->name('payment');
-Route::get('/payment/cancel', 'PaymentController@cancel')->name('payment.cancel');
-Route::get('/payment/success/{payment_id}', 'PaymentController@success')->name('payment.success');
+Route::get('/payment/{productID}', 'PaymentController@payWithPayPal')->name('payment')->middleware('auth');
+Route::get('/payment/cancel', 'PaymentController@cancel')->name('payment.cancel')->middleware('auth');
+Route::get('/payment/success/{payment_id}', 'PaymentController@success')->name('payment.success')->middleware('auth');

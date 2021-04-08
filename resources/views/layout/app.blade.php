@@ -19,7 +19,7 @@
 
                 @guest
                     <div class="nav--login">
-                        <li class="nav--ul__li"><a href="/new/product">Anunciá con nosotros</a></li>
+                        <li class="nav--ul__li"><a href="/registrar/admin">Anunciá con nosotros</a></li>
                         <li class="nav--ul__li"><a href="/login">Login</a></li>
                     </div>
                 @else
@@ -36,7 +36,7 @@
                 <div class="dropdown--content">
                     <ul class="nav--ul--dropdown">
                         @guest
-                            <li class="nav--ul__li--dropdown"><a href="/new/product">Anunciá con nosotros</a></li>
+                            <li class="nav--ul__li--dropdown"><a href="/registrar/admin">Anunciá con nosotros</a></li>
                             <li class="nav--ul__li--dropdown"><a href="/login">Login</a></li>
                         @else
                             <li class="nav--ul__li--dropdown"><a href="/new/product">Anunciá con nosotros</a></li>

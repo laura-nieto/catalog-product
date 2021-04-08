@@ -76,7 +76,7 @@ class ProductController extends Controller
 
         $validate = $request->validate($rules,$message);
         
-        
+        //TABLE Product_detail
         $product_detail->height = $request->height;
         $product_detail->size = $request->size;
         $product_detail->color1 = $request->color1;
@@ -96,7 +96,7 @@ class ProductController extends Controller
             $request->file('img')->storeAs('images',$imgName,'public');
         }
         
-        
+        //TABLE Products
         $product->name = $request->name;
         $product->description = $request->description;
         $product->price = $request->price;

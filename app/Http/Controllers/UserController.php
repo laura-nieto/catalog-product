@@ -64,7 +64,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('auth.register');
+        return view('auth.registerUser');
     }
 
     /**
@@ -76,7 +76,6 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $user = new User;
-
         $product_detail = new Product_detail;
 
         $rules = [
@@ -105,7 +104,8 @@ class UserController extends Controller
         ];
 
         $validate = $request->validate($rules,$message);
-            
+        
+        //TABLE Product_detail    
         $product_detail->height = $request->height;
         $product_detail->size = $request->size;
         $product_detail->color1 = $request->color1;
@@ -115,7 +115,8 @@ class UserController extends Controller
         $product_detail->price = $request->price;
         
         $product_detail->save();
-
+        
+        //TABLE Users
         $user->name = $request->name;
         $user->last_name = $request->lastname;
         $user->email = $request->email;
@@ -123,13 +124,11 @@ class UserController extends Controller
         $user->phone = $request->phone;
         $user->country = $request->country;
         $user->product_detail_id = $product_detail->id;
-
-        $user->account_type = 2;
+        $user->account_type = $request->account_type;
 
         $user->save();
 
         return redirect()->route('login');
-
     }
 
     /**
