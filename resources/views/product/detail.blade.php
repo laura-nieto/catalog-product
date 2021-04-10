@@ -19,7 +19,7 @@
             }
         }
     @endphp
-        
+    
     @if(session('message'))
         <div class="div--success" role="alert">
             <strong>{{ session('message')}}</strong>
@@ -28,6 +28,11 @@
     @if(session('error'))
         <div class="div--danger" role="alert">
             <strong>{{session('error')}}</strong>
+        </div>
+    @endif
+    @if(isset($country))
+        <div class="div--danger" role="alert">
+            <strong>{{$country}}</strong>
         </div>
     @endif
 

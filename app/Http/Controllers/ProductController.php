@@ -8,6 +8,7 @@ use App\Category;
 use App\Product_detail;
 use App\Asset;
 use Illuminate\Support\Facades\Auth;
+use Stevebauman\Location\Facades\Location;
 
 class ProductController extends Controller
 {
@@ -99,6 +100,7 @@ class ProductController extends Controller
         //TABLE Products
         $product->name = $request->name;
         $product->description = $request->description;
+        $product->country = json_encode($request->country);
         $product->price = $request->price;
         $product->phone = $request->phone;
         $product->category_id = $request->category;
@@ -162,7 +164,26 @@ class ProductController extends Controller
     public function show(Product $product, $id)
     {
         $product = Product::where('id',$id)->first();
-        return view('product.detail',['product'=>$product]);
+        
+        $ip = '181.47.248.146'; //For static IP address get
+        //$ip = request()->ip(); //Dynamic IP address get
+        $data = Location::get($ip)->countryName;
+        $data = strtolower($data);
+        
+        $productCountries = json_decode($product->country);
+        
+        foreach($productCountries as $country){
+            if($country == $data){
+                $available = true;
+            } 
+        }
+
+        if(isset($available)){
+            return view('product.detail',['product'=>$product]);
+        } else {
+            return view('product.detail',['product'=>$product])->with('country','Este producto no está disponible en tu país'); 
+        }
+ 
     }
 
     /**

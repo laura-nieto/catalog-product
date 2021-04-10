@@ -1,6 +1,12 @@
 /* La mayoría del código se comparte con el registro
     register.css
 */
+.newProduct--country{
+    margin-top: 15px;
+}
+.div__country input{
+    margin-right: 5px;
+}
 .newProduct--textarea{
     width: 300px;
     height: 120px;

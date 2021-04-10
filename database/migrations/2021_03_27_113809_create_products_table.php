@@ -18,6 +18,7 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->string('description');
             $table->string('img');
+            $table->string('country');
             $table->integer('price');
             $table->integer('phone');
             $table->foreignId('product_detail_id')->constrained('product_detail');

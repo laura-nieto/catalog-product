@@ -47,3 +47,6 @@ Route::post('/new/product','ProductController@store')->middleware('auth','admin'
 Route::get('/payment/{productID}', 'PaymentController@payWithPayPal')->name('payment')->middleware('auth');
 Route::get('/payment/cancel', 'PaymentController@cancel')->name('payment.cancel')->middleware('auth');
 Route::get('/payment/success/{payment_id}', 'PaymentController@success')->name('payment.success')->middleware('auth');
+
+//PRUEBA
+Route::get('/prueba','UserController@prueba');

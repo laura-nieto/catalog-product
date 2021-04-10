@@ -28,7 +28,16 @@
             @error('category')
                 <small class="error">{{$message}}</small>
             @enderror
-
+            
+            <div class="newProduct--country">
+                <label for="" class="register--label--general">Paises disponibles</label>
+                <div class="div__country"><input type="checkbox" name="country[]" id="argentina" value="argentina"><label for="argentina">Argentina</label></div>
+                <div class="div__country"><input type="checkbox" name="country[]" id="bolivia" value="bolivia"><label for="bolivia">Bolivia</label></div>
+                <div class="div__country"><input type="checkbox" name="country[]" id="paraguay" value="paraguay"><label for="paraguay">Paraguay</label></div>
+                <div class="div__country"><input type="checkbox" name="country[]" id="chile" value="chile"><label for="chile">Chile</label></div>
+                <div class="div__country"><input type="checkbox" name="country[]" id="mexico" value="mexico"><label for="mexico">México</label></div>
+            </div>
+            
         </section>
            
         <section class="newProduct--detail">
