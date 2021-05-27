@@ -10,13 +10,17 @@
         </div>
     @endif
     <section class="section--catalogue">
-        @foreach ($products as $product)
-            <article class="article--product">
-                <a href="/producto/{{$product->id}}" class="product--imag--a"><img src="{{asset("storage/images/$product->img")}}" alt=""></a>
-                <h3><a href="/producto/{{$product->id}}">{{$product->name}}</a></h3>
-                <h4>${{$product->price}}</h4>
-            </article>
-        @endforeach        
+        @if ($products->isEmpty())
+            <h3>No hay productos para mostrar</h3>
+        @else
+            @foreach ($products as $product)
+                <article class="article--product">
+                    <a href="/producto/{{$product->id}}" class="product--imag--a"><img src="{{asset("storage/images/$product->img")}}" alt=""></a>
+                    <h3><a href="/producto/{{$product->id}}">{{$product->name}}</a></h3>
+                    <h4>${{$product->price}}</h4>
+                </article>
+            @endforeach    
+        @endif      
     </section>
     
 @endsection
